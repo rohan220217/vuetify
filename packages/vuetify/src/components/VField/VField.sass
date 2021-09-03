@@ -149,7 +149,7 @@
   opacity: 0
   transition: $field-clearable-transition
 
-  .v-field--focused &,
+  .v-input--focused &,
   .v-field__control:hover &
     opacity: 1
 
@@ -174,10 +174,10 @@
   margin-inline-start: var(--v-field-padding-before)
   margin-inline-end: var(--v-field-padding-after)
 
-  .v-field--active &
+  .v-input--active &
     visibility: hidden
 
-  .v-field--focused &
+  .v-input--focused &
     opacity: 1
 
   .v-field--variant-plain &,
@@ -195,7 +195,7 @@
     visibility: hidden
     max-width: 100%
 
-    .v-field.v-field--active &
+    .v-field.v-input--active &
       visibility: visible
 
     .v-field--variant-contained &,
@@ -231,10 +231,10 @@
   .v-field__control:hover &
     --v-field-border-opacity: var(--v-high-emphasis-opacity)
 
-  .v-field.v-field--focused &
+  .v-field.v-input--focused &
     --v-field-border-opacity: 1
 
-  .v-field--variant-outlined.v-field--focused &
+  .v-field--variant-outlined.v-input--focused &
     --v-field-border-width: #{$field-focused-border-width}
 
   .v-field--variant-filled &,
@@ -256,7 +256,7 @@
       transform: scaleX(0)
       @include tools.absolute()
 
-      @at-root #{selector.append('.v-field--focused', &)}
+      @at-root #{selector.append('.v-input--focused', &)}
         transform: scaleX(1)
 
   .v-field--variant-outlined &
@@ -300,7 +300,7 @@
         bottom: 0
         border-width: 0 0 var(--v-field-border-width)
 
-      @at-root #{selector.append('.v-field--active', &)}
+      @at-root #{selector.append('.v-input--active', &)}
         &::before
           opacity: 0
 
@@ -344,7 +344,7 @@
   .v-field__control:hover .v-field__overlay
     opacity: calc(#{$field-overlay-filled-opacity + map.get(settings.$states, 'hover')} * var(--v-theme-overlay-multiplier))
 
-  &.v-field.v-field--focused .v-field__overlay
+  &.v-field.v-input--focused .v-field__overlay
     opacity: calc(#{$field-overlay-filled-opacity + map.get(settings.$states, 'focus')} * var(--v-theme-overlay-multiplier))
 
 /* endregion */
@@ -356,7 +356,7 @@
 
     @include tools.rtl()
       text-align: left
-.v-field--disabled
+.v-field.v-input--disabled
   pointer-events: none
 
   &,
