@@ -83,7 +83,8 @@ export const VTextField = defineComponent({
 
     useRender(() => {
       const hasCounter = (slots.counter || props.counter || props.counterValue)
-      const [_, restAttrs] = pick(attrs, ['class'])
+      const [_1, rootAttrs] = pick(attrs, [/^on[A-Z]/])
+      const [_2, inputAttrs] = pick(attrs, ['class'])
 
       return (
         <VField
@@ -94,7 +95,6 @@ export const VTextField = defineComponent({
               'v-text-field--prefixed': props.prefix,
               'v-text-field--suffixed': props.suffix,
             },
-            attrs.class,
           ]}
           active={ isDirty.value }
           onUpdate:active={ val => internalDirty.value = val }
@@ -105,7 +105,7 @@ export const VTextField = defineComponent({
             model.value = ''
           }}
           role="textbox"
-          { ...attrs }
+          { ...rootAttrs }
           { ...props }
           v-slots={{
             ...slots,
@@ -137,7 +137,7 @@ export const VTextField = defineComponent({
                     size={ 1 }
                     type={ props.type }
                     { ...slotProps }
-                    { ...restAttrs }
+                    { ...inputAttrs }
                   />
 
                   { props.suffix && (
